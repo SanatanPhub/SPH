@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import HeroBanner from '../components/HeroBanner'
 import ProductCard from '../components/ProductCard'
 import ServiceCard from '../components/ServiceCard'
-import { categories, products, services } from '../data/products'
+import { categories } from '../data/products'
+import { useProducts, useServices } from '../lib/useProducts'
 
 export default function Home() {
+  const { products } = useProducts()
+  const { services } = useServices()
   const featuredProducts = products.filter(p => p.featured)
 
   return (

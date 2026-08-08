@@ -1,11 +1,12 @@
 import { useParams, Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
-import { products } from '../data/products'
+import { useProducts } from '../lib/useProducts'
 import ProductCard from '../components/ProductCard'
 import toast from 'react-hot-toast'
 
 export default function ProductDetail() {
   const { id } = useParams()
+  const { products } = useProducts()
   const { addItem } = useCart()
   const product = products.find(p => p.id === Number(id))
 

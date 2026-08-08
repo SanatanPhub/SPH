@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
-import { categories, products } from '../data/products'
+import { categories } from '../data/products'
+import { useProducts } from '../lib/useProducts'
 
 export default function Products() {
+  const { products } = useProducts()
   const [searchParams, setSearchParams] = useSearchParams()
   const activeCategory = searchParams.get('category') || 'all'
   const [sortBy, setSortBy] = useState('featured')
@@ -17,7 +19,7 @@ export default function Products() {
       case 'rating': return [...list].sort((a, b) => b.rating - a.rating)
       default: return [...list].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
     }
-  }, [activeCategory, sortBy])
+  }, [products, activeCategory, sortBy])
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
