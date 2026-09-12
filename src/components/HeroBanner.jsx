@@ -40,7 +40,6 @@ export default function HeroBanner() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
             {[
-              { num: '1000+', label: 'Happy Customers' },
               { num: '500+', label: 'Products' },
               { num: '50+', label: 'Expert Consultants' },
               { num: '4.9', label: 'Average Rating' },
