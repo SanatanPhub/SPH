@@ -43,7 +43,7 @@ export default function About() {
             <div className="bg-white rounded-xl border border-gray-100 p-6">
               <h3 className="font-semibold text-gray-900 mb-3">💝 Customer First</h3>
               <p className="text-sm text-gray-600">
-                With 1000+ happy customers and a 4.9-star rating, we prioritize your satisfaction and
+                With a 4.9-star rating, we prioritize your satisfaction and
                 spiritual growth above everything.
               </p>
             </div>
