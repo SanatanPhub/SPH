@@ -52,7 +52,7 @@ export default function About() {
           <div className="bg-gradient-to-br from-saffron-500 to-saffron-600 rounded-2xl p-8 text-white text-center">
             <h2 className="text-xl font-bold mb-2">Connect With Us</h2>
             <p className="text-saffron-100 mb-4">Have questions? We would love to help you on your spiritual journey.</p>
-            <a href="mailto:info@sanatanpoojahub.com" className="inline-block bg-white text-saffron-600 font-semibold px-6 py-2 rounded-full hover:bg-saffron-50 transition-colors">
+            <a href="mailto:info@sanatanpoojahub.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-saffron-600 font-semibold px-6 py-2 rounded-full hover:bg-saffron-50 transition-colors">
               Email Us
             </a>
           </div>

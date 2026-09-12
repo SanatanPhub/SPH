@@ -36,7 +36,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800">Phone / WhatsApp</h3>
-                <p className="text-sm text-gray-600">+91 98765 43210</p>
+                <p className="text-sm text-gray-600">+91 70007 35410 / +91 96734 40637</p>
               </div>
             </div>
 
