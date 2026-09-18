@@ -1,7 +1,8 @@
 import Razorpay from 'razorpay'
 
 function getRazorpay() {
-  return new Razorpay({
+  const RazorpayClass = Razorpay.default || Razorpay
+  return new RazorpayClass({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
   })
@@ -18,6 +19,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Amount must be at least 100 paise (₹1)' })
   }
 
+  if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+    console.error('Missing Razorpay credentials in environment variables')
+    return res.status(500).json({ error: 'Payment gateway not configured' })
+  }
+
   try {
     const razorpay = getRazorpay()
     const order = await razorpay.orders.create({
@@ -32,7 +38,7 @@ export default async function handler(req, res) {
       currency: order.currency,
     })
   } catch (err) {
-    console.error('Razorpay create order error:', err)
+    console.error('Razorpay create order error:', err.message || err)
     if (err.statusCode === 401) {
       return res.status(401).json({ error: 'Razorpay authentication failed' })
     }
