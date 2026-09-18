@@ -43,6 +43,7 @@ CREATE TABLE orders (
   total_amount INTEGER NOT NULL,
   shipping_address TEXT,
   status TEXT DEFAULT 'pending',
+  razorpay_payment_id TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

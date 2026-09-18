@@ -100,9 +100,9 @@ export default function Cart() {
               </div>
             </div>
 
-            <button className="w-full bg-saffron-500 hover:bg-saffron-600 text-white font-semibold py-3 rounded-lg mt-6 transition-colors cursor-pointer">
+            <Link to="/checkout" className="block w-full bg-saffron-500 hover:bg-saffron-600 text-white font-semibold py-3 rounded-lg mt-6 transition-colors text-center">
               Proceed to Checkout
-            </button>
+            </Link>
 
             <Link to="/products" className="block text-center text-sm text-saffron-600 hover:underline mt-4">
               Continue Shopping
