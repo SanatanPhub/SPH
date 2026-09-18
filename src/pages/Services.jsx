@@ -1,22 +1,55 @@
+import { useState } from 'react'
 import ServiceCard from '../components/ServiceCard'
 import { useServices } from '../lib/useProducts'
 
+const subcategories = [
+  { id: 'all', name: 'All Services', icon: '🕉️' },
+  { id: 'pooja', name: 'Pooja', icon: '🪔' },
+  { id: 'consultation', name: 'Consultation', icon: '⭐' },
+  { id: 'jaap', name: 'Mantra Jaap', icon: '📿' },
+  { id: 'sanskar', name: 'Sanskar', icon: '🙏' },
+]
+
 export default function Services() {
   const { services } = useServices()
+  const [active, setActive] = useState('all')
+
+  const filtered = active === 'all' ? services : services.filter(s => s.category === active)
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="text-center mb-10">
+      <div className="text-center mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Puja Services</h1>
         <p className="text-gray-500 mt-2 max-w-2xl mx-auto">
           Book authentic Vedic pujas performed by experienced Pandit Ji. All puja samagri included in the package (except perishables).
         </p>
       </div>
 
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {subcategories.map(cat => (
+          <button
+            key={cat.id}
+            onClick={() => setActive(cat.id)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
+              active === cat.id
+                ? 'bg-saffron-500 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            <span className="mr-1">{cat.icon}</span> {cat.name}
+          </button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {services.map(service => (
+        {filtered.map(service => (
           <ServiceCard key={service.id} service={service} />
         ))}
       </div>
+
+      {filtered.length === 0 && (
+        <p className="text-center text-gray-400 py-12">No services found in this category.</p>
+      )}
 
       {/* How it works */}
       <section className="mt-16 bg-saffron-50 rounded-2xl p-8 md:p-12">

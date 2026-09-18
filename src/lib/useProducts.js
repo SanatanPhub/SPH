@@ -46,16 +46,11 @@ export function useServices() {
         setServices(data.map(s => ({
           id: s.id,
           name: s.name,
-          category: 'consultation',
+          category: s.category || 'pooja',
           price: s.price,
-          originalPrice: s.original_price,
           description: s.description,
-          image: s.image_url,
           duration: s.duration,
           icon: s.icon,
-          rating: parseFloat(s.rating),
-          reviews: s.reviews_count,
-          features: s.features || [],
         })))
       }
       setLoading(false)
