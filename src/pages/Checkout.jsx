@@ -130,7 +130,10 @@ export default function Checkout() {
             razorpay_payment_id: response.razorpay_payment_id,
           }
           const { error } = await supabase.from('orders').insert([order])
-          if (error) console.error('Order save error:', error)
+          if (error) {
+            console.error('Order save error:', error)
+            toast.error('Order could not be saved: ' + error.message)
+          }
         }
 
         clearCart()
