@@ -28,7 +28,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Categories</h3>
             <div className="flex flex-col gap-2">
-              <Link to="/products?category=crystal-rakhi" className="text-sm hover:text-saffron-400 transition-colors">Crystal Rakhi</Link>
+              <Link to="/products?category=crystal-rakshasutra" className="text-sm hover:text-saffron-400 transition-colors">Crystal Rakshasutra</Link>
               <Link to="/products?category=bracelets" className="text-sm hover:text-saffron-400 transition-colors">Crystal Bracelets</Link>
               <Link to="/products?category=pooja-items" className="text-sm hover:text-saffron-400 transition-colors">Pooja Items</Link>
               <Link to="/products?category=rudraksha" className="text-sm hover:text-saffron-400 transition-colors">Rudraksha</Link>

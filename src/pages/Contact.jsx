@@ -1,13 +1,41 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
+const WEB3FORMS_KEY = '8c564c95-294e-4c5d-981e-29b7eefe2784'
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    toast.success('Message sent! We will get back to you soon.')
+    setSending(true)
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: form.subject || `Contact Form Inquiry from ${form.name}`,
+          message: form.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        toast.success('Email sent successfully!')
+      } else {
+        toast.error('Failed to send email. Please try again.')
+      }
+    } catch {
+      toast.error('Failed to send email. Please try again.')
+    }
+
     setForm({ name: '', email: '', phone: '', subject: '', message: '' })
+    setSending(false)
   }
 
   return (
@@ -136,9 +164,10 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="w-full bg-saffron-500 hover:bg-saffron-600 text-white font-semibold py-3 rounded-lg transition-colors cursor-pointer"
+            disabled={sending}
+            className="w-full bg-saffron-500 hover:bg-saffron-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors cursor-pointer"
           >
-            Send Message
+            {sending ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>

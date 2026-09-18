@@ -20,7 +20,7 @@ export default function HeroBanner() {
             Your Sacred Destination for Spiritual Products & Services
           </p>
           <p className="text-white/80 mt-4 max-w-xl mx-auto">
-            Discover authentic crystal rakhis, healing bracelets, sacred Rudraksha, and expert consultation services for your spiritual journey.
+            Discover authentic crystal rakshasutras, healing bracelets, sacred Rudraksha, and expert consultation services for your spiritual journey.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
